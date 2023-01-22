@@ -1,5 +1,3 @@
-DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)
-22.01.2023 - 12:37;Hello!
 22.01.2023 - 12:38;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)
 22.01.2023 - 12:39;12.12;0.15;12.12;1.20;20.00;
 22.01.2023 - 12:41;12.10;0.19;12.10;1.80;22.00;
