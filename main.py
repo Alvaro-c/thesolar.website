@@ -20,7 +20,7 @@ def main():
         if ser.in_waiting > 0:
             line = ser.readline().decode('utf-8').rstrip()
             print(line)
-            with open(f"server/logs/{start_time}-power-info.txt", 'a+') as f:
+            with open(path, 'a+') as f:
                 time_stamp = f"{datetime.datetime.now().strftime('%d.%m.%Y - %H:%M')};{line}"
                 f.write(f"{time_stamp}\n")
                 f.close()
