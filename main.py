@@ -5,9 +5,7 @@ import os
 
 def main():
     start_time = datetime.datetime.now().strftime('%Y-%m-%d')
-    script_dir = os.path.dirname(__file__)
-    rel_path = f"server/logs/{start_time}-power-info.txt"
-    abs_file_path = os.path.join(script_dir, rel_path)
+    path = f"/home/pi/projects/thesolar.website/server/logs/{start_time}-power-info.txt"
 
     lapse = 60
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=lapse)
@@ -15,7 +13,7 @@ def main():
 
     header = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
 
-    with open(abs_file_path, 'a+') as f:
+    with open(path, 'a+') as f:
         f.write(f"{header}\n")
         f.close()
     while True:
