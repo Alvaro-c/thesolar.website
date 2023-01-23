@@ -1,14 +1,21 @@
 import datetime
 import serial
+import os
 
 
 def main():
     start_time = datetime.datetime.now().strftime('%Y-%m-%d')
+    script_dir = os.path.dirname(__file__)
+    rel_path = f"server/logs/{start_time}-power-info.txt"
+    abs_file_path = os.path.join(script_dir, rel_path)
+
     lapse = 60
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=lapse)
     ser.reset_input_buffer()
+
     header = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
-    with open(f"server/logs/{start_time}-power-info.txt", 'a+') as f:
+
+    with open(abs_file_path, 'a+') as f:
         f.write(f"{header}\n")
         f.close()
     while True:
