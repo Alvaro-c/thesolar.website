@@ -8,7 +8,7 @@ def main():
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=lapse)
     ser.reset_input_buffer()
     header = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
-    with open(f"{start_time}-power-info.txt", 'a+') as f:
+    with open(f"server/logs/{start_time}-power-info.txt", 'a+') as f:
         f.write(f"{header}\n")
         f.close()
     while True:
