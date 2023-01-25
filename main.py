@@ -22,9 +22,9 @@ def main():
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     ser.reset_input_buffer()
 
-    line = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
-    write_to_file(path, line)
-    print(line)
+    # line = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
+    # write_to_file(path, line)
+    # print(line)
 
     while True:
         time_now = int(time.time())
