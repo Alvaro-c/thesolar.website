@@ -16,7 +16,7 @@ def main():
     first_time = int(time.time())
     lapse = 60
     absolute_path = os.path.dirname(__file__)
-    path = f"/home/pi/projects/thesolar.website/django/the_solar_website_media/results/results.txt"
+    path = f"/home/pi/projects/thesolar.website/django/the_solar_website/media/results/results.txt"
     # path = f"{absolute_path}/django/the_solar_website/media/results/results.txt"
 
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
