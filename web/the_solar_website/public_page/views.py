@@ -1,10 +1,7 @@
 from django.http import HttpResponse
 
-from read_solar_panel import read_solar_panel
-
 
 def index(request):
-    read_solar_panel()
     filename = './media/results/results.txt'
     with open(filename, 'r') as f:
         output = f.readlines()

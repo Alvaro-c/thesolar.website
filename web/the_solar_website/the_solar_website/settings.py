@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from web.the_solar_website.settings.base import SECRET_KEY as django_key
+
+# from settings.base import lol
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-058y&k8jkf=@u&14881e4zklqun!7-wbt&2r*^ggo2r=j4om6p'
+SECRET_KEY = django_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thesolar.website']
+ALLOWED_HOSTS = ['thesolar.website', '127.0.0.1']
 
 
 # Application definition
