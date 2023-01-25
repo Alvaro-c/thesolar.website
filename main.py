@@ -16,15 +16,15 @@ def main():
     first_time = int(time.time())
     lapse = 60
     absolute_path = os.path.dirname(__file__)
-    path = f"/home/pi/projects/thesolar.website/django/the_solar_website_media/results/results.txt"
+    path = f"/home/pi/projects/thesolar.website/django/the_solar_website/media/results/results.txt"
     # path = f"{absolute_path}/django/the_solar_website/media/results/results.txt"
 
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     ser.reset_input_buffer()
 
-    line = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
-    write_to_file(path, line)
-    print(line)
+    # line = 'DateTime;Bus voltage (V);Shunt Voltage (mV);Load Voltage (V);Current (mA);Power (mW)'
+    # write_to_file(path, line)
+    # print(line)
 
     while True:
         time_now = int(time.time())
