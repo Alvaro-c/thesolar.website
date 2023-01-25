@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-058y&k8jkf=@u&14881e4zklqun!7-wbt&2r*^ggo2r=j4om6p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thesolar.website']
 
 
 # Application definition
