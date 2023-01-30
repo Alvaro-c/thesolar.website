@@ -9,7 +9,9 @@ def main():
     parser.add_argument("--s", help="Seconds between results")
     args = parser.parse_args()
 
-    lapse = 1 if not args.s else lapse = args.s
+    lapse = 5
+    if args.s:
+        lapse = int(args.s)
 
     first_time = int(time.time())
 
@@ -17,9 +19,10 @@ def main():
     ser.reset_input_buffer()
     while True:
         time_now = int(time.time())
-        if time_now > first_time + lapse and ser.in_waiting > 0:
+        if time_now > first_time + (lapse - 1) and ser.in_waiting > 0:
             line = ser.readline().decode('utf-8').rstrip()
-            print(line)
+            ser.reset_output_buffer()
+            print(f"{datetime.datetime.now().strftime('%d.%m.%Y - %H:%M:%S')} - {line}")
             first_time = time_now
 
 

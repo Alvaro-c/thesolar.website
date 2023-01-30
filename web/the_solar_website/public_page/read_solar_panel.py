@@ -10,7 +10,7 @@ def write_to_file(path, line):
         f.close()
 
 
-def main():
+def read_solar_panel():
 
     start_time = datetime.datetime.now().strftime('%d.%m.%Y')
     first_time = int(time.time())
