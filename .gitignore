@@ -105,3 +105,5 @@ dist
 
 .idea/
 /web/the_solar_website/settings/
+
+./.idea
