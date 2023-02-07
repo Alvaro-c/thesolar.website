@@ -4,10 +4,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    body = ""
-    for env in os.environ:
-        body = f"{body}{env}\n"
-    return HttpResponse(body)
+
+    return HttpResponse("OK")
 
 
 def testing(request):
