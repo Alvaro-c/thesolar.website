@@ -1,9 +1,11 @@
-import os
-
 from django.http import HttpResponse
+
+from power.models import Result
 
 
 def index(request):
+
+    Result.get_result()
 
     return HttpResponse("OK")
 

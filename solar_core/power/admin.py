@@ -1,4 +1,4 @@
-from solar_core.power.models import Result
+from power.models import Result
 from django.contrib import admin
 
 
