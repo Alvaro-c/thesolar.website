@@ -4,9 +4,6 @@ from django.db import models
 
 class Result(models.Model):
 
-    class Meta:
-        app_label = 'Results'
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     bus_voltage_V = models.FloatField()
@@ -39,3 +36,4 @@ class Result(models.Model):
                 power_mW=result_list[4],
             )
             print(result)
+            return result
