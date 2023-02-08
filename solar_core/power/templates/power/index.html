@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="300">
+    <title>thesolar.website</title>
+    <style>
+        .main h1, .main h2 {
+        text-align: center
+        }
+        .main table {
+            margin: auto
+             }
+        table {
+              border-collapse: collapse
+              }
+        td {
+        padding-right: 20px;
+        text-align: right ;
+        border: 1px black solid;
+        border-collapse: collapse
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+
+<h1>Power generation results using a 30W solar panel facing North in the city of Berlin </h1>
+<h2>Under development</h2>
+<table>
+        <tr>
+        <td>Time Stamp</td>
+        <td>Voltage (V)</td>
+        <td>Shunt Voltage (mV)</td>
+        <td>Load Voltage (V)</td>
+        <td>Current (mA)</td>
+        <td>Power (mW)</td>
+    </tr>
+{% for result in results %}
+    <tr>
+        <td>{{result.created_at|date:'D. d M Y - H:i:s'}}</td>
+        <td>{{result.bus_voltage_V}}</td>
+        <td>{{result.shunt_voltage_mV}}</td>
+        <td>{{result.load_voltage_V}}</td>
+        <td>{{result.current_mA}}</td>
+        <td>{{result.power_mW}}</td>
+    </tr>
+
+    {% endfor %}
+
+
+</table>
+    </div>
+</body>
+</html>

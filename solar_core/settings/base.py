@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'environ',
     'solar_core',
+    'power',
 ]
 
 MIDDLEWARE = [
