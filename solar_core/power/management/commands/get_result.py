@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from solar_core.power.models import Result
+from power.models import Result
 
 
 class Command(BaseCommand):
