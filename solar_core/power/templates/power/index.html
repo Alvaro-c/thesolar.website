@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="300">
     <title>thesolar.website</title>
     <style>
         .main h1, .main h2 {
@@ -35,6 +34,7 @@
         <td>Load Voltage (V)</td>
         <td>Current (mA)</td>
         <td>Power (mW)</td>
+        <td>Battery V</td>
     </tr>
 {% for result in results %}
     <tr>
@@ -44,6 +44,7 @@
         <td>{{result.load_voltage_V}}</td>
         <td>{{result.current_mA}}</td>
         <td>{{result.power_mW}}</td>
+        <td>{{result.battery_voltage}}</td>
     </tr>
 
     {% endfor %}

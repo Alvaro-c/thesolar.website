@@ -1,14 +1,15 @@
-from django.http import HttpResponse
-from django.template import loader
+from datetime import date
+from datetime import datetime
 from django.shortcuts import render
 
-from power.models import Result
+from power.models import Result, get_result
 
 
 def index(request):
-
-    result = Result.get_result()
-    results = Result.objects.order_by('-created_at').all()
+    today = date.today()
+    today = datetime.combine(today, datetime.min.time())
+    get_result()
+    results = Result.objects.filter(created_at__gte=today).order_by('-created_at')
 
     context = {
         'results': results,
