@@ -109,12 +109,8 @@ dist
 ./.idea
 
 # Byte-compiled / optimized / DLL files
-<<<<<<< HEAD
 
 **/__pycache__/
-=======
-__pycache__/
->>>>>>> eafe603b21763b5bb8c8c828402ad2780997d28b
 *.py[cod]
 
 # C extensions
