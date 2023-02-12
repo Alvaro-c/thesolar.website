@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>thesolar.website</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <style>
         .main h1, .main h2 {
         text-align: center
@@ -30,8 +32,6 @@
         <tr>
         <td>Time Stamp</td>
         <td>Voltage (V)</td>
-        <td>Shunt Voltage (mV)</td>
-        <td>Load Voltage (V)</td>
         <td>Current (mA)</td>
         <td>Power (mW)</td>
         <td>Battery V</td>
@@ -40,8 +40,6 @@
     <tr>
         <td>{{result.created_at|date:'D. d M Y - H:i:s'}}</td>
         <td>{{result.bus_voltage_V}}</td>
-        <td>{{result.shunt_voltage_mV}}</td>
-        <td>{{result.load_voltage_V}}</td>
         <td>{{result.current_mA}}</td>
         <td>{{result.power_mW}}</td>
         <td>{{result.battery_voltage}}</td>
