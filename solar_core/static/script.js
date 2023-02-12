@@ -1,9 +1,7 @@
 window.addEventListener("DOMContentLoaded", start);
 
 function start() {
-  console.log("LOL");
   getData();
-  //   drawGraph();
 }
 
 async function getData() {
