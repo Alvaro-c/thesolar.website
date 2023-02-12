@@ -87,6 +87,10 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    f"{BASE_DIR}/static",
+]
+
 WSGI_APPLICATION = 'solar_core.wsgi.application'
 
 

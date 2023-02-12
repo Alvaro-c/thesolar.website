@@ -163,3 +163,6 @@ docs/_build/
 **/.idea/
 
 
+.idea/*
+.idea/misc.xml
+.idea/thesolar.website.iml

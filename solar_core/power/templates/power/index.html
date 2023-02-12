@@ -1,56 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>thesolar.website</title>
-    <style>
-        .main h1, .main h2 {
-        text-align: center
-        }
-        .main table {
-            margin: auto
-             }
-        table {
-              border-collapse: collapse
-              }
-        td {
-        padding-right: 20px;
-        text-align: right ;
-        border: 1px black solid;
-        border-collapse: collapse
-        }
-    </style>
-</head>
-<body>
-<div class="main">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+    <script src="{% static 'moment.min.js' %}"></script>
+    <script src="{% static 'script.js' %}"></script>
+  </head>
+  <body>
+    <div class="main">
+      <h1>
+        Power generation results using a 30W solar panel facing North in the
+        city of Berlin
+      </h1>
+      <h2>Under development</h2>
+      <p class="inroduction">
+        This project consist in a web server entirely powered by a solar panel.
+      </p>
 
-<h1>Power generation results using a 30W solar panel facing North in the city of Berlin </h1>
-<h2>Under development</h2>
-<table>
-        <tr>
-        <td>Time Stamp</td>
-        <td>Voltage (V)</td>
-        <td>Shunt Voltage (mV)</td>
-        <td>Load Voltage (V)</td>
-        <td>Current (mA)</td>
-        <td>Power (mW)</td>
-        <td>Battery V</td>
-    </tr>
-{% for result in results %}
-    <tr>
-        <td>{{result.created_at|date:'D. d M Y - H:i:s'}}</td>
-        <td>{{result.bus_voltage_V}}</td>
-        <td>{{result.shunt_voltage_mV}}</td>
-        <td>{{result.load_voltage_V}}</td>
-        <td>{{result.current_mA}}</td>
-        <td>{{result.power_mW}}</td>
-        <td>{{result.battery_voltage}}</td>
-    </tr>
+      <div class="content">
+        <div class="chartContainer">
+          <h3>Battery level</h3>
+          <p>
+            The solar panel charges a Lead Acid 12V battery with 7000mAh
+            capacity. That battery then powers a Raspberry pi Zero.
+          </p>
+          <p>
+            The battery is considered charged when it is over 12.9V and
+            discharged when the voltage drops to 11.6V
+          </p>
+          <p>
+            The Voltage is measured with a Voltage sensor connected to an
+            Arduino Nano
+          </p>
+          <canvas id="chart"></canvas>
+        </div>
 
-    {% endfor %}
+        <div class="tableContainer">
+          <h3 class="tableSectionTitle">Measurements</h3>
+          <p>
+            The following measurements are result of a INA219 sensor connected
+            to the same Arduino Nano as the Voltage sensor.
+          </p>
 
+          <p>
+            The Raspberry Zero has a consumption of 5V and ~230mA, therefore
+            1.15W per hour. The system is self-sufficien when the power
+            generated during the day is over ~28W.
+          </p>
 
-</table>
+          <table>
+            <tr>
+              <td>Time Stamp</td>
+              <td>Voltage (V)</td>
+              <td>Current (mA)</td>
+              <td>Power (mW)</td>
+              <td>Battery (V)</td>
+            </tr>
+            {% for result in results %}
+            <tr>
+              <td>{{result.created_at|date:'D. d M Y - H:i:s'}}</td>
+              <td>{{result.bus_voltage_V}}</td>
+              <td>{{result.current_mA}}</td>
+              <td>{{result.power_mW}}</td>
+              <td>{{result.battery_voltage}}</td>
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+
+        <div class="roadmapSection">
+          <h3>Roadmap and future development</h3>
+          <p>
+            The project is entirely depeloped during free time and as a hobby.
+            Future things to be done, not necessarily in this order:
+          </p>
+          <ul>
+            <li>Keep track of Raspberry pi power consumption</li>
+            <li>
+              Weld properly the different cirquits (now everything lays in a
+              breadboad)
+            </li>
+            <li>Improve webpage design</li>
+            <li>Document and make a list of components</li>
+          </ul>
+
+          <p>
+            Currently I lack of a proper place facing south to improve the
+            results, but this should change in a few weeks. Until then, the page
+            is mostly offline.
+          </p>
+
+          <p>
+            For any comment or suggestion, please contact me in my LinkedIn
+            account:
+            <a href="https://www.linkedin.com/in/alvaro-canas/?locale=en_US">
+              Alvaro-c</a
+            >
+          </p>
+
+          <p>
+            Code available in
+            <a href="https://github.com/Alvaro-c/thesolar.website">GitHub</a>
+          </p>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

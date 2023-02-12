@@ -1,10 +1,10 @@
  /*
   DC-Current-Voltage-Sensor-Module using INA219
-  
+
   based on Adafruit Example and Amir Mohammad Shojaei  article:
   https://electropeak.com/learn/interfacing-ina219-current-sensor-module-with-arduino/
 
-  Battery voltage level using Voltage Sensor 
+  Battery voltage level using Voltage Sensor
   https://how2electronics.com/interfacing-0-25v-dc-voltage-sensor-with-arduino/
 
   Code addapted by Alvaro-c: https://github.com/Alvaro-c
@@ -24,13 +24,13 @@ float adc_voltage = 0.0;
 float in_voltage = 0.0;
 // Floats for resistor values in divider (in ohms)
 float R1 = 30000.0;
-float R2 = 7500.0; 
+float R2 = 7500.0;
 // Float for Reference Voltage
 float ref_voltage = 5.0;
 // Integer for ADC value
 int adc_value = 0;
 
-void setup(void) 
+void setup(void)
 {
   Serial.begin(9600);
   while (!Serial) {
@@ -39,7 +39,7 @@ void setup(void)
   }
 
   uint32_t currentFrequency;
-    
+
 
   if (! ina219.begin()) {
     Serial.println("Failed to find INA219 chip");
@@ -48,7 +48,7 @@ void setup(void)
 
 }
 
-void loop(void) 
+void loop(void)
 {
   // Amper and Voltage powe production
   float shuntvoltage = 0;
@@ -67,9 +67,9 @@ void loop(void)
   // Read the Analog Input
    adc_value = analogRead(ANALOG_IN_PIN);
    // Determine voltage at ADC input
-   adc_voltage  = (adc_value * ref_voltage) / 1024.0; 
+   adc_voltage  = (adc_value * ref_voltage) / 1024.0;
    // Calculate voltage at divider input
-   in_voltage = adc_voltage / (R2/(R1+R2)) ; 
+   in_voltage = adc_voltage / (R2/(R1+R2)) ;
 
   // Print results
 
