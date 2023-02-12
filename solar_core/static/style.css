@@ -1,0 +1,43 @@
+.main h1,
+.main h2 {
+  text-align: center;
+}
+.main h2 {
+  font-style: italic;
+}
+
+.inroduction {
+  text-align: center;
+}
+
+.main table {
+  margin: 50px auto;
+}
+table {
+  border-collapse: collapse;
+  padding-top: 100px;
+}
+td {
+  padding-right: 20px;
+  text-align: right;
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+.chartContainer {
+  margin: auto;
+  width: 70%;
+  height: 300px;
+  align-items: flex-start;
+  padding-bottom: 150px;
+}
+
+.content {
+  display: block;
+}
+
+.tableContainer,
+.roadmapSection {
+  margin: 50px auto;
+  width: 70%;
+}
