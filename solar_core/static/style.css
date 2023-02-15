@@ -11,11 +11,11 @@
 }
 
 .main table {
-  margin: 50px auto;
+  margin: 10px auto;
 }
 table {
   border-collapse: collapse;
-  padding-top: 100px;
+
 }
 td {
   padding-right: 20px;
@@ -40,4 +40,10 @@ td {
 .roadmapSection {
   margin: 50px auto;
   width: 70%;
+}
+
+.error_reading {
+padding-top 10px;
+color: red;
+text-align:center
 }

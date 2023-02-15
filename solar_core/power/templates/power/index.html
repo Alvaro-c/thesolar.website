@@ -52,6 +52,10 @@
             generated during the day is over ~28W.
           </p>
 
+           {%if error_reading %}
+            <p class="error_reading"> There has been an error trying to read the last result  </p>
+          {% endif %}
+
           <table>
             <tr>
               <td>Time Stamp</td>
