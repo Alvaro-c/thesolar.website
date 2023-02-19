@@ -42,7 +42,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'thesolar.website']
+ALLOWED_HOSTS = ['127.0.0.1', 'thesolar.website', '192.168.1.16']
 
 
 # Application definition
