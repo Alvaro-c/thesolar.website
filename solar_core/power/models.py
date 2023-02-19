@@ -43,15 +43,3 @@ def get_result():
         )
         print(result)
         return result
-
-import board
-import busio
-import adafruit_ina226
-
-def get_result_ina_226():
-    i2c = busio.I2C(board.SCL, board.SDA)
-    ina226 = adafruit_ina226.INA226(i2c)
-
-    print("Bus Voltage: {:.2f} V".format(ina226.bus_voltage))
-    print("Current: {:.2f} mA".format(ina226.current))
-    print("Power: {:.2f} mW".format(ina226.power))
