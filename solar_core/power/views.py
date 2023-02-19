@@ -5,16 +5,12 @@ from power.models import Result, get_result
 
 
 def index(request):
-    get_result()
-    results = Result.objects.all().order_by('-created_at')[:300]
-
-    context = {
-        'results': results,
-    }
-    return render(request, 'power/index.html', context)
+    return render(request, 'power/index.html')
 
 
 def data(request):
-    results = list(Result.objects.all().order_by('-created_at')[:300].values())
+    number_rows = request.GET.get('n', '')
+    get_result()
+    results = list(Result.objects.all().order_by('-created_at')[:int(number_rows)].values())
 
     return JsonResponse(results, safe=False)

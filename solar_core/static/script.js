@@ -5,17 +5,24 @@ function start() {
 }
 
 async function getData() {
-  await fetch("/data", {
+  await fetch("/data?n=150", {
     method: "GET",
     headers: {
       Accept: "application/json",
     },
   })
     .then((response) => response.json())
-    .then((response) => drawGraph(response));
+    .then((response) => {
+      fillTable(response);
+      drawGraph(response);
+    })
+    .catch(() => {
+      console.log("error while fetching");
+    });
 }
 
 function drawGraph(data) {
+  data = data.reverse();
   let ctx = document.getElementById("chart").getContext("2d");
 
   let chart = new Chart(ctx, {
@@ -46,5 +53,34 @@ function drawGraph(data) {
         ],
       },
     },
+  });
+}
+
+function fillTable(data) {
+  const dateOptions = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+
+  let table = document.getElementById("resultsTable");
+  table.innerHTML = `<td>Time Stamp</td><td>Voltage (V)</td><td>Current (mA)</td><td>Power (mW)</td><td>Battery (V)</td>`;
+
+  data.forEach((series) => {
+    const date = new Date(series["created_at"]).toLocaleString(
+      "de-DE",
+      dateOptions
+    );
+    const row = table.insertRow();
+    row.innerHTML = `<td>${date}</td>
+                     <td>${series["bus_voltage_V"]}</td>
+                     <td>${series["current_mA"]}</td>
+                     <td>${series["power_mW"]}</td>
+                     <td>${series["battery_voltage"]}</td>`;
   });
 }

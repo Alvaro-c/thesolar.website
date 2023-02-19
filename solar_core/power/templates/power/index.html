@@ -52,25 +52,13 @@
             generated during the day is over ~28W.
           </p>
 
-          <table>
-            <tr>
-              <td>Time Stamp</td>
-              <td>Voltage (V)</td>
-              <td>Current (mA)</td>
-              <td>Power (mW)</td>
-              <td>Battery (V)</td>
-            </tr>
-            {% for result in results %}
-            <tr>
-              <td>{{result.created_at|date:'D. d M Y - H:i:s'}}</td>
-              <td>{{result.bus_voltage_V}}</td>
-              <td>{{result.current_mA}}</td>
-              <td>{{result.power_mW}}</td>
-              <td>{{result.battery_voltage}}</td>
-            </tr>
+          {%if error_reading %}
+          <p class="error_reading">
+            There has been an error trying to read the last result
+          </p>
+          {% endif %}
 
-            {% endfor %}
-          </table>
+          <table id="resultsTable"></table>
         </div>
 
         <div class="roadmapSection">

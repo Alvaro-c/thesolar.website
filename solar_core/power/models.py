@@ -20,7 +20,11 @@ class Result(models.Model):
 
 
 def get_result():
-    ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+    try:
+        ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+    except Exception as e:
+        return None
+
     ser.reset_input_buffer()
 
     while ser.in_waiting == 0:
