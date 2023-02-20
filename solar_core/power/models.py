@@ -89,7 +89,6 @@ def get_result_from_rpi():
     power = ina219.power  # power in watts
 
     # INA219 measure bus voltage on the load side. So PSU voltage = bus_voltage + shunt_voltage
-    print(f"{bus_voltage};{shunt_voltage};{bus_voltage+shunt_voltage};{current / 1000};{power};{battery_voltage}")
 
     result = Result.objects.create(
         bus_voltage_V='{0:.2f}'.format(float(bus_voltage)),
@@ -99,6 +98,6 @@ def get_result_from_rpi():
         power_mW='{0:.2f}'.format(float(power/1000)),
         battery_voltage='{0:.2f}'.format(float(battery_voltage)),
     )
-
+    print(result)
     return result
 
