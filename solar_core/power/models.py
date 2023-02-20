@@ -51,7 +51,10 @@ def get_result():
 def get_battery_voltage():
     try:
         ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+        print(ser)
     except Exception as e:
+        print('Exception: ')
+        print(e)
         return None
 
     ser.reset_input_buffer()
@@ -61,6 +64,8 @@ def get_battery_voltage():
 
     if ser.in_waiting > 0:
         line = ser.readline().decode('utf-8').rstrip()
+        print('line')
+        print(line)
         result_list = line.split(";")
         battery_voltage = result_list[5]
         return battery_voltage
