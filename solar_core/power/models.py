@@ -92,12 +92,12 @@ def get_result_from_rpi():
     print(f"{bus_voltage};{shunt_voltage};{bus_voltage+shunt_voltage};{current / 1000};{power};{battery_voltage}")
 
     result = Result.objects.create(
-        bus_voltage_V=float('{0:.2f}'.format(bus_voltage)),
-        shunt_voltage_mV=float('{0:.2f}'.format(shunt_voltage)),
-        load_voltage_V=float('{0:.2f}'.format(bus_voltage+shunt_voltage)),
-        current_mA=float('{0:.2f}'.format(current / 1000)),
-        power_mW=float('{0:.2f}'.format(power/1000)),
-        battery_voltage=float('{0:.2f}'.format(battery_voltage)),
+        bus_voltage_V='{0:.2f}'.format(float(bus_voltage)),
+        shunt_voltage_mV='{0:.2f}'.format(float(shunt_voltage)),
+        load_voltage_V='{0:.2f}'.format(float(bus_voltage+shunt_voltage)),
+        current_mA='{0:.2f}'.format(float(current / 1000)),
+        power_mW='{0:.2f}'.format(float(power/1000)),
+        battery_voltage='{0:.2f}'.format(float(battery_voltage)),
     )
 
     return result
