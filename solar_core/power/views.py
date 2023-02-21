@@ -10,7 +10,7 @@ def index(request):
 
 def data(request):
     number_rows = request.GET.get('n', '')
-    # get_result()
+    get_result()
 
     results = list(Result.objects.all().order_by('-created_at')[:int(number_rows)].values())
 

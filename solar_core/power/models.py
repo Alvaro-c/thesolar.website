@@ -56,7 +56,7 @@ def get_result():
     bus_voltage = ina219.bus_voltage
     shunt_voltage = ina219.shunt_voltage
     current = ina219.current  # current in mA
-    power = (ina219.power/1000)  # power in mW
+    power = (ina219.power * 1000)  # power in mW
 
     result = Result.objects.create(
         bus_voltage_V='{0:.2f}'.format(bus_voltage),
