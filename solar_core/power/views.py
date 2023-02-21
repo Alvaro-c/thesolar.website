@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
-from power.models import Result, get_result, get_result_from_rpi
+from power.models import Result, get_battery_result, get_solar_panel_result
 
 
 def index(request):
@@ -10,8 +10,14 @@ def index(request):
 
 def data(request):
     number_rows = request.GET.get('n', '')
-    # get_result()
-    get_result_from_rpi()
-    results = list(Result.objects.all().order_by('-created_at')[:int(number_rows)].values())
+    get_battery_result()
+    get_solar_panel_result()
+
+    results = [
+        list(Result.objects.filter(source=Result.Source.SOLAR_PANEL)
+             .order_by('-created_at')[:int(number_rows)].values()),
+        list(Result.objects.filter(source=Result.Source.BATTERY)
+             .order_by('-created_at')[:int(number_rows)].values())
+    ]
 
     return JsonResponse(results, safe=False)
