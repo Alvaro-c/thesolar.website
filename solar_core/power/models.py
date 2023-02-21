@@ -5,9 +5,6 @@ from adafruit_ina219 import ADCResolution, INA219
 
 
 class Result(models.Model):
-    class Source(models.TextChoices):
-        SOLAR_PANEL = "SOLAR_PANEL"
-        BATTERY = "BATTERY"
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -16,12 +13,7 @@ class Result(models.Model):
     load_voltage_V = models.FloatField()
     current_mA = models.FloatField()
     power_mW = models.FloatField()
-    source = models.CharField(
-        max_length=50,
-        choices=Source.choices,
-        null=True,
-        blank=True,
-    )
+    solar_panel_current_mA = models.FloatField()
 
     def __str__(self):
         return f"{self.created_at};{self.bus_voltage_V};" \
@@ -29,7 +21,7 @@ class Result(models.Model):
                f"{self.current_mA};{self.power_mW};{self.source};"
 
 
-def get_solar_panel_result():
+def get_solar_panel_current():
     try:
         ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     except Exception as e:
@@ -42,20 +34,18 @@ def get_solar_panel_result():
 
     if ser.in_waiting > 0:
         line = ser.readline().decode('utf-8').rstrip()
-        result_list = line.split(";")
-        result = Result.objects.create(
-            bus_voltage_V=result_list[0],
-            shunt_voltage_mV=result_list[1],
-            load_voltage_V=result_list[2],
-            current_mA=result_list[3],
-            power_mW=result_list[4],
-            source=Result.Source.SOLAR_PANEL,
-        )
-        print(result)
-        return result
+        try:
+            line = float(line)
+        except Exception as e:
+            line = 0
+            print(e)
+
+        return line
 
 
-def get_battery_result():
+def get_result():
+    solar_panel_current = get_solar_panel_current()
+
     i2c_bus = board.I2C()  # uses board.SCL and board.SDA
 
     ina219 = INA219(i2c_bus)
@@ -74,7 +64,7 @@ def get_battery_result():
         load_voltage_V='{0:.2f}'.format(bus_voltage+shunt_voltage),
         current_mA='{0:.2f}'.format(current),
         power_mW='{0:.2f}'.format(power),
-        source=Result.Source.BATTERY,
+        solar_panel_current_mA='{0:.2f}'.format(solar_panel_current),
     )
     print(result)
     return result
