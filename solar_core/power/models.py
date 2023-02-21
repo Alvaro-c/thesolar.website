@@ -18,7 +18,7 @@ class Result(models.Model):
     def __str__(self):
         return f"{self.created_at};{self.bus_voltage_V};" \
                f"{self.shunt_voltage_mV};{self.load_voltage_V};" \
-               f"{self.current_mA};{self.power_mW};{self.source};"
+               f"{self.current_mA};{self.power_mW};{self.solar_panel_current_mA};"
 
 
 def get_solar_panel_current():
