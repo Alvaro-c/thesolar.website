@@ -5,7 +5,6 @@ from adafruit_ina219 import ADCResolution, INA219
 
 
 class Result(models.Model):
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     bus_voltage_V = models.FloatField()
@@ -45,8 +44,11 @@ def get_solar_panel_current():
 
 def get_result():
     solar_panel_current = get_solar_panel_current()
-
-    i2c_bus = board.I2C()  # uses board.SCL and board.SDA
+    try:
+        i2c_bus = board.I2C()  # uses board.SCL and board.SDA
+    except Exception as e:
+        # Sensor is not connected
+        return 'Error'
 
     ina219 = INA219(i2c_bus)
     # Change configuration to use 32 samples averaging for both bus voltage and shunt voltage
@@ -61,7 +63,7 @@ def get_result():
     result = Result.objects.create(
         bus_voltage_V='{0:.2f}'.format(bus_voltage),
         shunt_voltage_mV='{0:.2f}'.format(shunt_voltage),
-        load_voltage_V='{0:.2f}'.format(bus_voltage+shunt_voltage),
+        load_voltage_V='{0:.2f}'.format(bus_voltage + shunt_voltage),
         current_mA='{0:.2f}'.format(current),
         power_mW='{0:.2f}'.format(power),
         solar_panel_current_mA='{0:.2f}'.format(solar_panel_current),
