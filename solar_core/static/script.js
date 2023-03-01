@@ -34,7 +34,7 @@ function drawGraph(data) {
       datasets: [
         {
           label: "Battery Voltage",
-          data: data.map((item) => item.battery_voltage),
+          data: data.map((item) => item.load_voltage_V),
           backgroundColor: "rgba(75, 192, 192, 0.2)",
           borderColor: "rgba(75, 192, 192, 1)",
           borderWidth: 1,
@@ -69,7 +69,11 @@ function fillTable(data) {
   };
 
   let table = document.getElementById("resultsTable");
-  table.innerHTML = `<td>Time Stamp</td><td>Voltage (V)</td><td>Current (mA)</td><td>Power (mW)</td><td>Battery (V)</td>`;
+  table.innerHTML = `<td>Time Stamp</td>
+                     <td>Voltage (V)</td>
+                     <td>Power (mW)</td>
+                     <td>Battery Current (mA)</td>
+                     <td>Solar Current (mA)</td>`;
 
   data.forEach((series) => {
     const date = new Date(series["created_at"]).toLocaleString(
@@ -78,9 +82,9 @@ function fillTable(data) {
     );
     const row = table.insertRow();
     row.innerHTML = `<td>${date}</td>
-                     <td>${series["bus_voltage_V"]}</td>
-                     <td>${series["current_mA"]}</td>
-                     <td>${series["power_mW"]}</td>
-                     <td>${series["battery_voltage"]}</td>`;
+                     <td>${series["load_voltage_V"].toFixed(2)}</td>
+                     <td>${series["power_mW"].toFixed(2)}</td>
+                     <td>${series["current_mA"].toFixed(2)}</td>
+                     <td>${series["solar_panel_current_mA"].toFixed(2)}</td>`;
   });
 }
