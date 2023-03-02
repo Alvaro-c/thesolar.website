@@ -71,7 +71,9 @@ function drawGraph(data) {
             id: "y-axis-2",
             position: "right",
             ticks: {
-              beginAtZero: false,
+              beginAtZero: true,
+              suggestedMin: -400,
+              suggestedMax: 400,
             },
           },
         ],
