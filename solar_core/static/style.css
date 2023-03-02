@@ -1,4 +1,18 @@
 /* Title */
+
+* {
+  color: white;
+}
+body {
+  background-color: black;
+}
+
+.corner-image {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+}
+
 h1 {
   margin-top: 3%;
   text-align: center;
@@ -16,13 +30,13 @@ h1 {
 
 .introduction {
   margin: 3% auto;
-  width: 70%;
+  max-width: 70%;
 }
 
 /* development */
 .development {
   margin: 3% auto;
-  width: 70%;
+  max-width: 70%;
 }
 .development-title {
   font-weight: bold;
@@ -64,7 +78,7 @@ td {
 
 .chartContainer {
   margin: auto;
-  width: 70%;
+  max-width: 70%;
   height: 300px;
   align-items: flex-start;
   padding-bottom: 150px;
@@ -85,7 +99,7 @@ td {
 /* Table */
 .table-section {
   margin: 8% auto;
-  width: 70%;
+  max-width: 70%;
 }
 
 .table-container {
@@ -93,17 +107,57 @@ td {
   overflow: scroll;
 }
 
+.table-legend {
+  display: flex;
+  margin: auto;
+}
+
+.table-legend-container {
+  margin: 20px auto;
+  max-width: 70%;
+}
+
+.table-legend-green {
+  background-color: #b7e1cd;
+  width: 60px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.table-legend-red {
+  background-color: #f4c7c3;
+  width: 60px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.results-table {
+  border: white 3px solid;
+  margin-top: 10px;
+}
+
+/* Table header */
+.results-table tr:first-child td {
+  color: black;
+  background-color: white;
+}
+
+.results-table td {
+  color: black;
+  border: white 1px solid;
+}
+
 /* Hack And Tell (HAT) */
 
 .hat-section {
   margin: 3% auto;
-  width: 70%;
+  max-width: 70%;
 }
 
 /* Roadmap */
 .roadmapSection {
   margin: 50px auto;
-  width: 70%;
+  max-width: 70%;
 }
 
 .text-crossed {
@@ -112,12 +166,6 @@ td {
 
 .normal-text {
   text-decoration: none;
-}
-
-.error_reading {
-  padding-top: 10px;
-  color: red;
-  text-align: center;
 }
 
 /* Battery current colors */
@@ -133,7 +181,7 @@ td {
 
 .gallery-wrapper {
   box-sizing: border-box;
-  max-width: 70%;
+  max-max-width: 70%;
   margin: auto;
   margin-top: 50px;
 }

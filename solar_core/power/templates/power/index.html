@@ -11,18 +11,19 @@
     <script src="{% static 'script.js' %}"></script>
   </head>
   <body>
+    <img src="{% static 'favicon.ico' %}" alt="logo" class="corner-image" />
     <div class="main">
       <h1>The Solar Website</h1>
       <h2>Under development</h2>
       <div class="introduction">
         <h3 class="introduction-title">Welcome</h3>
         <p>
-          This website is running in a Raspberry pi Model 3b and it's hosting a
-          Django server. It also has its own internet, using a SIM card.
+          This website is entirely powered with solar energy. It also has its
+          own internet, using a SIM card, so it will be online as long as there
+          are sun and mobile signal.
         </p>
         <p>
-          Everything is powered with a solar panel, so it will be online as long
-          as there is sun and mobile signal.
+          It is running in a Django server hosted in a Raspberry pi Model 3b.
         </p>
       </div>
 
@@ -57,8 +58,8 @@
               <div class="challenge-point-title">Power consumption</div>
               <div>
                 The Raspberry Pi 3 Model b requires a lot of power for the
-                current battery and it only lasts 01 day without sunlight. I'll
-                buy bigger batteries.
+                current battery and it only lasts 01 day (~30 hours) without
+                sunlight. I'll buy bigger batteries.
               </div>
             </div>
             <div class="challenge-point">
@@ -103,7 +104,7 @@
 
           <div class="chart-container-text">
             The battery is considered charged when it is over 13.80V and
-            discharged when the voltage drops to 11.6V.
+            discharged when the voltage drops to 10.9V.
           </div>
           <div class="chart-container-text">
             The data is collected with an INA219 connected to the I2C ports of
@@ -126,14 +127,18 @@
             when the page is reloaded.
           </p>
 
-          {%if error_reading %}
-          <p class="error_reading">
-            There has been an error trying to read the last result
-          </p>
-          {% endif %}
-
           <div class="table-container">
-            <table id="resultsTable"></table>
+            <div class="table-legend-container">
+              <div class="table-legend">
+                <div class="table-legend-green"></div>
+                <div>Charging</div>
+              </div>
+              <div class="table-legend">
+                <div class="table-legend-red"></div>
+                <div>Discharging</div>
+              </div>
+            </div>
+            <table id="resultsTable" class="results-table"></table>
           </div>
         </div>
 

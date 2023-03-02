@@ -24,6 +24,7 @@ def get_solar_panel_current():
     try:
         ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     except Exception as e:
+        # Arduino is not connected, lecture is 0
         return 0
 
     ser.reset_input_buffer()
