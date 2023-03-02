@@ -24,7 +24,7 @@ def get_solar_panel_current():
     try:
         ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     except Exception as e:
-        return None
+        return 0
 
     ser.reset_input_buffer()
 
