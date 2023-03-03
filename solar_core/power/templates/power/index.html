@@ -94,7 +94,7 @@
 
       <div class="content">
         <!-- Chart  -->
-        <div class="chartContainer">
+        <div class="chart-container">
           <h3>Battery level</h3>
           <div class="chart-container-text">
             The following graph shows the Voltage present in the cirquit. It
@@ -110,9 +110,13 @@
             The data is collected with an INA219 connected to the I2C ports of
             the Raspi.
           </div>
+        </div>
 
+        <div class="battery-chart">
           <canvas id="chart"></canvas>
+        </div>
 
+        <div class="chart-container">
           <div class="chart-container-text">
             When the current is positive, the energy flow out of the battery
             (discharge), when it's negative, it flows inside the battery

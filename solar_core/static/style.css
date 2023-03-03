@@ -3,8 +3,38 @@
 * {
   color: white;
 }
+
 body {
   background-color: black;
+  margin: auto;
+  max-width: 70%;
+}
+
+@media screen and (max-width: 800px) {
+  /* Set max-width to 90% on screens under 800px */
+  body {
+    max-width: 90%;
+  }
+
+  .introduction-title {
+    margin-top: 10%;
+  }
+  .corner-image {
+    height: 20%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* Set max-width to 90% on screens under 500px */
+  .introduction-title {
+    margin-top: 15%;
+  }
+  .corner-image {
+    height: 15%;
+    position: absolute;
+    top: -50px;
+    left: -40px;
+  }
 }
 
 .corner-image {
@@ -29,14 +59,12 @@ h1 {
 }
 
 .introduction {
-  margin: 3% auto;
-  max-width: 70%;
+  margin: 5% auto;
 }
 
 /* development */
 .development {
   margin: 3% auto;
-  max-width: 70%;
 }
 .development-title {
   font-weight: bold;
@@ -76,16 +104,17 @@ td {
 
 /* Chart */
 
-.chartContainer {
+.chart-container {
   margin: auto;
-  max-width: 70%;
-  height: 300px;
-  align-items: flex-start;
-  padding-bottom: 150px;
 }
 
 .chart-container-text {
   margin: 5px 0;
+}
+
+.battery-chart {
+  align-items: flex-start;
+  padding-bottom: 50px;
 }
 
 #chart {
@@ -99,7 +128,6 @@ td {
 /* Table */
 .table-section {
   margin: 8% auto;
-  max-width: 70%;
 }
 
 .table-container {
@@ -114,7 +142,6 @@ td {
 
 .table-legend-container {
   margin: 20px auto;
-  max-width: 70%;
 }
 
 .table-legend-green {
@@ -151,13 +178,11 @@ td {
 
 .hat-section {
   margin: 3% auto;
-  max-width: 70%;
 }
 
 /* Roadmap */
 .roadmapSection {
   margin: 50px auto;
-  max-width: 70%;
 }
 
 .text-crossed {
@@ -181,7 +206,7 @@ td {
 
 .gallery-wrapper {
   box-sizing: border-box;
-  max-max-width: 70%;
+  max-width: 70%;
   margin: auto;
   margin-top: 50px;
 }
